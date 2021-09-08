@@ -2,21 +2,21 @@ import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import Card from '../components/card';
 import Navigation from '../components/navigation';
-import getTopStories from '../endpoints/getTopStories';
+import getBestStories from '../endpoints/getBestStories';
 import { Stories } from '../models/hacker-news';
 
 const Home: NextPage = () => {
   const [stories, setStories] = useState<Stories>([]);
 
   useEffect(() => {
-    getTopStories().then(({ res }) => {
+    getBestStories().then(({ res }) => {
       if (res) {
         setStories(res.data);
       }
     });
   }, []);
 
-  const [loadAmount, setLoadAmount] = useState<number>(10);
+  const [loadAmount, setLoadAmount] = useState<number>(20);
 
   useEffect(() => {
     window.onscroll = function (ev) {

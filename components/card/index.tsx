@@ -54,6 +54,7 @@ const Card: FunctionComponent<Props> = ({ id }) => {
       {story && metaData && (
         <>
           <CardHeader
+            text={story.content}
             url={story.url || ''}
             user={story.user || ''}
             title={story.title}
@@ -66,10 +67,11 @@ const Card: FunctionComponent<Props> = ({ id }) => {
             image={metaData.image || ''}
           />
           <CardFooter
+            setShowComments={setShowComments}
             commentsCount={story.comments_count}
             pointsCount={story.points || 0}
           />
-          <CardComments story={story} />
+          <CardComments show={showComments} story={story} />
         </>
       )}
     </div>

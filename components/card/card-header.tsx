@@ -9,6 +9,7 @@ interface Props {
   description: string;
   timeAgo: number;
   url: string;
+  text: string;
 }
 
 const CardHeader: FunctionComponent<Props> = ({
@@ -17,6 +18,7 @@ const CardHeader: FunctionComponent<Props> = ({
   description,
   timeAgo,
   url,
+  text,
 }) => {
   const router = useRouter();
 
@@ -33,13 +35,13 @@ const CardHeader: FunctionComponent<Props> = ({
           />
         </button>
         <div className='flex flex-col'>
-          <a href={url}>
+          <div role='button' onClick={() => window.open(url)}>
             <h1
               title={title}
               className='w-96 whitespace-nowrap overflow-hidden overflow-ellipsis cursor-pointer hover:underline'>
               {title}
             </h1>
-          </a>
+          </div>
 
           <p
             className='text-xs cursor-pointer hover:underline'
@@ -48,7 +50,7 @@ const CardHeader: FunctionComponent<Props> = ({
             ).format('h:mm a')}`}>{`${dayjs(timeAgo).format('H')}h`}</p>
         </div>
       </div>
-      <p className='cursor-default'>{description}</p>
+      <p className='cursor-default'>{text || description}</p>
     </div>
   );
 };

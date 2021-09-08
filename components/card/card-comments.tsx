@@ -58,8 +58,6 @@ const CardComments: FunctionComponent<Props> = ({ story, show }) => {
   const { comments } = story;
   const [commentLoadAmount, setCommentLoadAmount] = useState<number>(3);
 
-  console.log(comments);
-
   if (!show) {
     return null;
   }

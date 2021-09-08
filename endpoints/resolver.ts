@@ -8,7 +8,8 @@ interface IResolve {
 }
 
 export default async function resolve(
-  config: AxiosRequestConfig
+  config: AxiosRequestConfig,
+  internalURL = false
 ): Promise<IResolve> {
   const resolved = {
     err: null,
@@ -16,7 +17,7 @@ export default async function resolve(
   } as IResolve;
 
   try {
-    const res = await fetch(config);
+    const res = await fetch(config, internalURL);
 
     if (!res.data) {
       resolved.err = new Error(`${config.url}: No data was returned`);

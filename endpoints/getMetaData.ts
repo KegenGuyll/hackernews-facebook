@@ -13,7 +13,10 @@ interface IResolvedMetaData {
 }
 
 export default function getMetaData(url: string): Promise<IResolvedMetaData> {
-  return resolve({
-    url: `http://localhost:8080/page/meta/?url=${url}`,
-  });
+  return resolve(
+    {
+      url: `/page/meta/?url=${url}`,
+    },
+    true
+  );
 }

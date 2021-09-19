@@ -28,16 +28,16 @@ const Home: NextPage = () => {
   });
 
   return (
-    <div>
+    <>
       <Navigation />
-      <div className='flex flex-col justify-center items-center mx-5'>
+      <div className='flex flex-col justify-center items-center sm:mx-5'>
         <div className='max-w-2xl'>
           {stories.slice(0, loadAmount).map((id) => (
             <Card key={id} id={id} />
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

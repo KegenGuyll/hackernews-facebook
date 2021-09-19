@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 
 const CardSkeleton: FunctionComponent = () => {
   return (
-    <div className='bg-dark-default shadow my-5 rounded py-5 h-128 w-200 '>
+    <div className='bg-dark-default shadow my-5 rounded py-5 h-128 w-full '>
       <div className='animate-pulse px-5 flex space-x-4'>
         <div className='rounded-full bg-dark-light  h-12 w-12'></div>
         <div className='flex-1 space-y-4 py-1'>

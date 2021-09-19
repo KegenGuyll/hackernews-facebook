@@ -7,7 +7,8 @@ interface Props {
   user: string;
   title: string;
   description: string;
-  timeAgo: number;
+  timeAgo: string;
+  time: number;
   url: string;
   text: string;
 }
@@ -17,6 +18,7 @@ const CardHeader: FunctionComponent<Props> = ({
   title,
   description,
   timeAgo,
+  time,
   url,
   text,
 }) => {
@@ -25,29 +27,31 @@ const CardHeader: FunctionComponent<Props> = ({
   return (
     <div className='flex flex-col p-5 justify-start items-start'>
       <div className='flex flex-row place-content-center place-items-center mb-3'>
-        <button title={user} onClick={() => router.push(`/profile/${user}`)}>
+        <button
+          className='h-10 w-10 mr-3 hidden sm:block'
+          title={user}
+          onClick={() => router.push(`/profile/${user}`)}>
           <img
-            className='mr-3 bg-dark-light hover:bg-dark-lighter rounded-full'
+            className=' h-full w-full rounded-full'
             height='40'
             width='40'
-            src={`https://avatars.dicebear.com/api/pixel-art-neutral/${user}.svg`}
+            src={`https://avatars.dicebear.com/api/big-ears-neutral/${user}.svg`}
             alt={user}
           />
         </button>
         <div className='flex flex-col'>
           <div role='button' onClick={() => window.open(url)}>
-            <h1
-              title={title}
-              className='w-96 whitespace-nowrap overflow-hidden overflow-ellipsis cursor-pointer hover:underline'>
+            <h1 title={title} className='cursor-pointer hover:underline'>
               {title}
             </h1>
           </div>
-
           <p
             className='text-xs cursor-pointer hover:underline'
-            title={`${dayjs(timeAgo).format('dddd, MMMM D')} at ${dayjs(
-              timeAgo
-            ).format('h:mm a')}`}>{`${dayjs(timeAgo).format('H')}h`}</p>
+            title={`${dayjs(time).format('dddd, MMMM D')} at ${dayjs(
+              time
+            ).format('h:mm a')}`}>
+            {timeAgo}
+          </p>
         </div>
       </div>
       <p className='cursor-default'>{text || description}</p>

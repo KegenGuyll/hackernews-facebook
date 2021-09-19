@@ -1,6 +1,7 @@
-import { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useRef, useState } from 'react';
 import getMetaData from '../../endpoints/getMetaData';
 import getStory from '../../endpoints/getStory';
+import useOnScreen from '../../hooks/useOnScreen';
 import { Story } from '../../models/hacker-news';
 import { MetaData } from '../../models/metaData';
 import Spinner from '../Spinner';
@@ -49,6 +50,10 @@ const Card: FunctionComponent<Props> = ({ id }) => {
     return <CardSkeleton />;
   }
 
+  if (story?.type !== 'link') {
+    return null;
+  }
+
   return (
     <div className='bg-dark-default rounded flex flex-col my-5 w-full overflow-hidden'>
       {story && metaData && (
@@ -59,7 +64,8 @@ const Card: FunctionComponent<Props> = ({ id }) => {
             user={story.user || ''}
             title={story.title}
             description={metaData.description || ''}
-            timeAgo={story.time}
+            timeAgo={story.time_ago}
+            time={story.time}
           />
           <CardImg
             url={story.url}

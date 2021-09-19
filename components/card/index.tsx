@@ -73,6 +73,7 @@ const Card: FunctionComponent<Props> = ({ id }) => {
             image={metaData.image || ''}
           />
           <CardFooter
+            postId={story.id}
             setShowComments={setShowComments}
             commentsCount={story.comments_count}
             pointsCount={story.points || 0}

@@ -14,6 +14,6 @@ interface IResolvedBestStories {
 
 export default function getBestStories(): Promise<IResolvedBestStories> {
   return resolve({
-    url: 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty',
+    url: 'https://hacker-news.firebaseio.com/v0/beststories.json?print=pretty',
   });
 }

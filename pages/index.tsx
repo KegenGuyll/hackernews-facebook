@@ -18,12 +18,18 @@ const Home: NextPage = () => {
 
   const [loadAmount, setLoadAmount] = useState<number>(20);
 
+  const handleScroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      if (loadAmount >= stories.length) return;
+      setLoadAmount(loadAmount + 10);
+    }
+  };
+
   useEffect(() => {
-    window.onscroll = function (ev) {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        if (loadAmount >= stories.length) return;
-        setLoadAmount(loadAmount + 10);
-      }
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
     };
   });
 
